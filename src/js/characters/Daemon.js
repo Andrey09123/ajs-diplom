@@ -1,13 +1,16 @@
 import Character from '../Character';
 
 export default class Daemon extends Character {
-  constructor(level, type) {
-    super(level, type);
+  constructor(level, type = 'daemon') {
+    super(level);
+    if (type !== 'daemon') {
+      throw new Error('Некорректный тип персонажа');
+    } else {
+      this.type = type;
+    }
     this.attack = 10;
-    this.defence = 10;
-    this.type = 'daemon';
+    this.defence = 40;
+    this.attackDistance = 4;
+    this.moveDistance = 1;
   }
 }
-
-// const daemonGen = new Daemon(2);
-// console.log(daemonGen.level) // 2

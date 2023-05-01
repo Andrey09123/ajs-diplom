@@ -35,6 +35,11 @@ export default class GamePlay {
         <button data-id="action-save" class="btn">Save Game</button>
         <button data-id="action-load" class="btn">Load Game</button>
       </div>
+        <div class="stats">
+            <span class="stats-name">Level: <span class="level"></span></span>
+            <span class="stats-name">Ponts: <span class="points"></span></span>
+            <span class="stats-name">Best points: <span class="best-points"></span></span>  
+        </div>
       <div class="board-container">
         <div data-id="board" class="board"></div>
       </div>
@@ -53,7 +58,7 @@ export default class GamePlay {
     this.boardEl.classList.add(theme);
     for (let i = 0; i < this.boardSize ** 2; i += 1) {
       const cellEl = document.createElement('div');
-      cellEl.classList.add('cell', 'map-tile', `map-tile-${calcTileType(i, this.boardSize)}`);
+      cellEl.classList.add('cell', 'map-tile', `map-tile-${calcTileType(i, this.boardSize)}`, i);
       cellEl.addEventListener('mouseenter', (event) => this.onCellEnter(event));
       cellEl.addEventListener('mouseleave', (event) => this.onCellLeave(event));
       cellEl.addEventListener('click', (event) => this.onCellClick(event));

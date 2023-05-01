@@ -1,19 +1,17 @@
 {
   "name": "ajs-diplom",
   "version": "1.0.0",
-  "description": "###### tags: `netology` `advanced js`",
+  "description": "Вы неплохо овладели не только продвинутыми возможностями JS, но и инфраструктурными инструментами. И вам поручили первый проект: разработать небольшую пошаговую игру.",
   "main": "index.js",
   "scripts": {
     "test": "jest",
-    "coverage": "jest --coverage",
-    "dev": "webpack --mode development",
+    "lint": "eslint .",
     "build": "webpack --mode production",
-    "start": "webpack-dev-server --mode development",
-    "lint": "eslint ."
+    "start": "webpack serve --mode development"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Andrey09123/ajs-diplom.git"
+    "url": "git+https://github.com/Andrey09123/ajs-diplom"
   },
   "author": "Andrey",
   "license": "ISC",
@@ -22,26 +20,25 @@
   },
   "homepage": "https://github.com/Andrey09123/ajs-diplom#readme",
   "devDependencies": {
-    "@babel/cli": "^7.19.3",
-    "@babel/core": "^7.19.3",
-    "@babel/preset-env": "^7.19.4",
-    "babel-jest": "^29.2.0",
-    "babel-loader": "^8.2.5",
-    "clean-webpack-plugin": "^4.0.0",
+    "@babel/cli": "^7.17.6",
+    "@babel/core": "^7.17.9",
+    "@babel/preset-env": "^7.16.11",
+    "babel-jest": "^27.5.1",
+    "babel-loader": "^8.2.4",
     "css-loader": "^6.7.1",
-    "eslint": "^8.25.0",
+    "eslint": "^8.13.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-plugin-import": "^2.26.0",
-    "html-loader": "^4.2.0",
+    "html-loader": "^3.1.0",
     "html-webpack-plugin": "^5.5.0",
-    "jest": "^29.2.0",
-    "mini-css-extract-plugin": "^2.6.1",
+    "jest": "^27.5.1",
+    "mini-css-extract-plugin": "^2.6.0",
     "url-loader": "^4.1.1",
-    "webpack": "^5.74.0",
-    "webpack-cli": "^4.10.0",
-    "webpack-dev-server": "^4.11.1"
+    "webpack": "^5.72.0",
+    "webpack-cli": "^4.9.2",
+    "webpack-dev-server": "^4.8.1"
   },
   "dependencies": {
-    "moment": "^2.29.4"
+    "core-js": "^3.21.1"
   }
 }

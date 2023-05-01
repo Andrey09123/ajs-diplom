@@ -1,46 +1,28 @@
-import Character from './Character';
-import Bowman from './characters/Bowman';
-import Swordsman from './characters/Swordsman';
-import Magician from './characters/Magician';
-import Vampire from './characters/Vampire';
-import Undead from './characters/Undead';
-import Daemon from './characters/Daemon';
-import Team from './Team';
 /**
- * Формирует экземпляр персонажа из массива allowedTypes со
- * случайным уровнем от 1 до maxLevel
+ * Generates random characters
  *
- * @param allowedTypes массив классов
- * @param maxLevel максимальный возможный уровень персонажа
- * @returns генератор, который при каждом вызове
- * возвращает новый экземпляр класса персонажа
- *
+ * @param allowedTypes iterable of classes
+ * @param minLevel min character level
+ * @param maxLevel max character level
+ * @returns Character type children (ex. Magician, Bowman, etc)
  */
 
-export function* characterGenerator(allowedTypes, maxLevel) {
-  // TODO: write logic here
-  for (;;) {
-    const type = Math.floor(Math.random() * allowedTypes.length);
-    const level = Math.floor(Math.random() * maxLevel) + 1;
-    yield new allowedTypes[type](level);
+export function* characterGenerator(allowedTypes, minLevel, maxLevel) {
+  while (true) {
+    const typeChar = Math.floor(Math.random() * allowedTypes.length);
+    const levelChar = Math.floor(Math.random() * ((maxLevel + 1) - minLevel) + minLevel);
+
+    yield new allowedTypes[typeChar](levelChar);
   }
 }
 
-/**
- * Формирует массив персонажей на основе characterGenerator
- * @param allowedTypes массив классов
- * @param maxLevel максимальный возможный уровень персонажа
- * @param characterCount количество персонажей, которое нужно сформировать
- * @returns экземпляр Team, хранящий экземпляры персонажей. Количество персонажей в команде - characterCount
- * */
-export function generateTeam(allowedTypes, maxLevel, characterCount) {
-  // TODO: write logic here
+export function generateTeam(allowedTypes, minLevel, maxLevel, characterCount) {
   const team = [];
-  const character = characterGenerator(allowedTypes, maxLevel);
+  const char = characterGenerator(allowedTypes, minLevel, maxLevel);
 
-  for (; team.length < characterCount;) {
-    team.push(character.next().value);
+  for (let i = 0; i < characterCount; i += 1) {
+    team.push(char.next().value);
   }
+
   return team;
 }
-

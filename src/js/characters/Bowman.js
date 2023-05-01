@@ -1,13 +1,16 @@
 import Character from '../Character';
 
 export default class Bowman extends Character {
-  constructor(level, type) {
+  constructor(level, type = 'bowman') {
     super(level, type);
+    if (type !== 'bowman') {
+      throw new Error('Некорректный тип персонажа');
+    } else {
+      this.type = type;
+    }
     this.attack = 25;
     this.defence = 25;
-    this.type = 'bowman';
+    this.attackDistance = 2;
+    this.moveDistance = 2;
   }
 }
-
-// const bowmanGen = new Bowman(1);
-// console.log(bowmanGen) // 3
