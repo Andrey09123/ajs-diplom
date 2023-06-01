@@ -9,4 +9,20 @@ export default class Character {
       throw new Error('You cant create a Character class');
     }
   }
+
+  static levelUp(char) {
+    const character = char;
+    character.level += 1;
+
+    AddFunctions.levelUpAttackDefence(character);
+
+    character.health += 80;
+    if (character.health > 100) {
+      character.health = 100;
+    }
+
+    Math.round(character.health);
+
+    return character;
+  }
 }

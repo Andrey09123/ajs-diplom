@@ -39,6 +39,7 @@ export function calcTileType(index, boardSize) {
   }
 
   return 'center';
+
 }
 
 export function calcHealthLevel(health) {
@@ -51,4 +52,21 @@ export function calcHealthLevel(health) {
   }
 
   return 'high';
+}
+
+static getRandomNumber(num) {
+  return Math.floor(Math.random() * num);
+}
+
+  static levelUpAttackDefence(char) {
+  const character = char;
+  character.attack = Math.round(Math.max(
+    character.attack,
+    (character.attack * (80 + character.health)) / 100,
+  ));
+  character.defence = Math.round(Math.max(
+    character.defence,
+    (character.defence * (80 + character.health)) / 100,
+  ));
+  return character;
 }

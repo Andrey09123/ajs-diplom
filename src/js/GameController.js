@@ -264,17 +264,12 @@ export default class GameController {
       // Вычисляем доступную дистанцию для атаки
       const rangeAttack = distance(posChar, posChar.position, 'attack');
 
-      // Проверяем, есть ли в зоне атаки противник
-      rangeAttack.find((itemIndex) => {
+      const willBeAttacked = rangeAttackIndexes.find(index => {
         const characterInCell = this.checkCharacterInCell(itemIndex);
-
-        // Если есть и персонаж игрока - цель для атаки выбрана
-        if (characterInCell && AddFunctions.isPlayableCharacter(characterInCell)) {
-          willBeAttacked = characterInCell;
-          return willBeAttacked;
-        }
-        return false;
-      });
+     
+             // Если есть и персонаж игрока - цель для атаки выбрана
+             return characterInCell && AddFunctions.isPlayableCharacter(characterInCell)
+     });
 
       // Если есть цель для атаки - атакуем
       if (willBeAttacked) {
@@ -534,5 +529,22 @@ export default class GameController {
     if (!this.turn) {
       this.turnComp();
     }
+  }
+
+  static isPlayableCharacter(char) {
+    if (char.character.type === 'bowman' || char.character.type === 'magician' || char.character.type === 'swordsman') {
+      return true;
+    }
+    return false;
+  }
+
+  static compMoveRange(rangeAttackUser, rangeMove, cellCanMove) {
+    rangeAttackUser.forEach((itemAttack) => {
+      rangeMove.forEach((itemMove) => {
+        if (itemMove === itemAttack) {
+          cellCanMove.push(itemMove);
+        }
+      });
+    });
   }
 }

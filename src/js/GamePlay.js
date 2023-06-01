@@ -233,4 +233,14 @@ export default class GamePlay {
       throw new Error('GamePlay not bind to DOM');
     }
   }
+
+  static statsUpdate(level, points, bestPoints) {
+    const statsLevel = document.querySelector('.level');
+    const statsPoints = document.querySelector('.points');
+    const statsBestPoints = document.querySelector('.best-points');
+
+    statsLevel.innerText = level;
+    statsPoints.innerText = points;
+    statsBestPoints.innerText = bestPoints;
+  }
 }

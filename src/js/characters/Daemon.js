@@ -1,7 +1,7 @@
 import Character from '../Character';
 
 export default class Daemon extends Character {
-  constructor(level, type = 'daemon') {
+  constructor(level) {
     super(level);
     if (type !== 'daemon') {
       throw new Error('Некорректный тип персонажа');
